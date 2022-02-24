@@ -19,11 +19,12 @@ We have listed hints for 3 vulnerabilities below which are currently present in 
 
 1. Password is Hardcoded (SampleNetworkClient.py)
 2. Token List has the potential to continuously grow (SampleNetworkServer.py)
-3. Complete Password/Token Bypass (SampleNetworkServer.py)
+3. Plaintest authentication token and authentication (SampleNetworkClient.py)
 
-
-
-
+#Submission: 
+For each vulnerability above:
+1. describe how it violates the US Government regulations.
+2. Provide test cases (in python) to demonstrate how these vulnerabilities can be exploited.   
 
 ## Infant Incubator Model Explained
 Cybersecurity education lacks practicality. We know the security principles. We know the importance of cryptography and building-security-in. We know the importance of an adversarial mindset (the security mindset). We know the importance of exposing assumptions (especially implicit ones). However, how many of us know how to apply these theoretical principles in the real world? How to trade off security for the other abilities. While build in security is incomplete, we also need to plan for upgrades.
