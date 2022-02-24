@@ -1,16 +1,10 @@
-# Final Project - Infant Incubator Model and Simulator
+# Lab 6 - Infant Incubator Model and Simulator Part 2
 
 In this assignment you will apply everything you have learned in this module on a real world application, the Infant Incubator. The Infant Incubator is designed to provide a safe, controlled 
 space for infants to live while their vital organs develop. Unlike a simple bassinet, an incubator provides an environment that can be adjusted to provide the ideal temperature as well as the perfect amount 
-of oxygen, humidity, and light. This paticular Infant Incubator is set to release on **15th August**(Deadline of the Project). The developers of this project would like you, the Security Engineer, to ensure the product satisify US Government's security regulations for medical devices before the release date. As a Security Engineer, you are required **"Make sure we satisfiy US Government Regulations"**. The company has given you the options of accomplishing this by either implementing Vulnerability Patching or creating a Risk Analysis Report.
+of oxygen, humidity, and light. This paticular Infant Incubator is set to release on **15th May**(Deadline of the Project). The developers of this project would like you, the Security Engineer, to ensure the product satisify US Government's security regulations for medical devices before the release date. As a Security Engineer, you are required **"Make sure we satisfiy US Government Regulations"**. The company has given you the options of accomplishing this by either implementing Vulnerability Patching or creating a Risk Analysis Report.
 
-**Note: You are allowed to do this project individually or with another Security Engineer**
-
-The final deliverables for this project could be either one of these:
-
-## Option 1 - Vulnerability Patching
-
-**Part 1.1 - Identify Vulnerabilities and Testcases**
+The deliverables for this Lab will based on the vulnerability patching:
 
 Your first goal as a Security Engineer who wants to ensure the security of the application is to identify security vulnerabilities in the project and create testcases to exploit them. In the real world, applications are often tested with test scripts. The following are a few questions a Security Engineer would ask when writing a testcase to test the Security of their application:
 
@@ -20,93 +14,15 @@ Your first goal as a Security Engineer who wants to ensure the security of the a
 
 Notice that these questions are parallel to security paradigms: Security, Efficiency and Accuracy, Availability. If you can find a hypothesis where a security paradigm is not met that would mean the application is not secure and a possible exploit exist. The testcases can be written in python or bash.
 
-Sample Testcase (Will be shared later today):
-```
-#This is just an example of a testcase
-#Vulnerability Name - Authentication available
-import socket
+# Task:
+We have listed hints for 3 vulnerabilities below which are currently present in code. Your task is to explain how it violates the US Government Regulations and then provide the testcases to demonstrate how these vulnerabilities can be exploited. 
 
-def authenticate(p, pw) :
-    s = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-    s.sendto(b"AUTH %s" % pw, ("127.0.0.1", p))
-    msg, addr = s.recvfrom(1024)
-    return msg.strip()
+1. Password is Hardcoded (SampleNetworkClient.py)
+2. Token List has the potential to continuously grow (SampleNetworkServer.py)
+3. Complete Password/Token Bypass (SampleNetworkServer.py)
 
-try:
-    
-    infPort = 23456
-    incPort = 23457
-    incToken = authenticate(incPort, b"!Q#E%T&U8i6y4r2w")
 
-    # SampleNetworkServer has authentication so the testcase will exit at this assertion.
-    assert(incToken != None)
-except Exception as ex:
-    print (ex)
-    assert(1 == 2)
 
-```
-
-**Part 1.2 - Fix the vulnerabilities**
-
-For each of the vulnerabilies you have identified in Part 1.1, fix the vulnerability to ensure they are no longer exploitable.
-
-### **Running the Infant Incubator** 
-To run the main code [SampleNetworkServer.py](SampleNetworkServer.py)
-
-```
-python3 SampleNetworkServer.py
-```
-
-Note: The code only runs on python 3. If you run into the error `ModuleNotFoundError: No Module named 'matplotlib'`, install matplotlib with the following command:
-```
-pip3 install matplotlib
-```
-
-Hint: 
-```
-#Other ways to connect to the Infant Incubator Server
-nc -u 127.0.0.1 23456
-
-#Authenticating with the Server. This should return you a AUTH_TOKEN
-AUTH !Q#E%T&U8i6y4r2w
-
-#Running commands with the Server
-AUTH_TOKEN;SET_DEGF
-or
-AUTH_TOKEN;SET_DEGK
-```
-
-**What to Submit**
-
-On NYU Brightspace, submit a link to your GitHub repository.
-
-The repository should contain:
- - Testcases (40)
-    - Minimum 4 Testcases that works and are real vulnerabilites. (10 for each)
- - Vulnerabilies (40)
-    - Minimum 4 Vulnerabilies that works. (10 for each)
-    Note: 2 different vulnerability could have the same fix.
- - Vulnerabilies.txt (20)
-    - 20 marks for description of the vulnerabilies, testcases and patches.
-
-## Option 2 - Risk Analysis Report
-As a Security Engineer, write a detailed Risk Analysis Report for the Infant Incubator application. This report should contain details on the vulnerabilities and how they do not satisify the US Government Regulations(Refer to resources provide below). To identify this vulnerabilies you are encouraged to use tools you have learned in this course such as Threat Modelling and Risk Assesment. In the real world, Security Engineers are not given alot of details about the architecture or details on the program so they often have to make assumptions to find attack vectors and threats. 
-
-Resources:
-
-Software as a Medical Device (SAMD): Clinical Evaluation  Guidance for Industry and  Food and Drug Administration Staff - https://www.fda.gov/media/100714/download
-
-Pre-Market Considerations for Medical Device Cybersecurity - http://www.imdrf.org/docs/imdrf/final/technical/imdrf-tech-200318-pp-mdc-n60.pdf
-
-**What to Submit**
-
-On NYU Brightspace, submit your detailed risk analysis report.
-
-Risk Analysis Report Format:
-- Background (Architecture) (20)
-- Identify Assets (20)
-- Threat Modelling/Risk Analysis (30)
-- Apply Security Reviews (How do you mitigate the threats) (30)
 
 
 ## Infant Incubator Model Explained
