@@ -1,4 +1,4 @@
-# Lab 6 - Infant Incubator Model and Simulator Part 2
+# Lab 5 - Infant Incubator Model and Simulator Part 2
 
 In this assignment you will apply everything you have learned in this module on a real world application, the Infant Incubator. The Infant Incubator is designed to provide a safe, controlled 
 space for infants to live while their vital organs develop. Unlike a simple bassinet, an incubator provides an environment that can be adjusted to provide the ideal temperature as well as the perfect amount 
@@ -21,7 +21,7 @@ We have listed hints for 3 vulnerabilities below which are currently present in 
 2. Token List has the potential to continuously grow (SampleNetworkServer.py)
 3. Plaintest authentication token and authentication (SampleNetworkClient.py)
 
-#Submission: 
+# Submission: 
 For each vulnerability above:
 1. describe how it violates the US Government regulations.
 2. Provide test cases (in python) to demonstrate how these vulnerabilities can be exploited.   
