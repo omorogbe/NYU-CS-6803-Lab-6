@@ -2,7 +2,7 @@
 
 In this assignment you will apply everything you have learned in this module on a real world application, the Infant Incubator. The Infant Incubator is designed to provide a safe, controlled 
 space for infants to live while their vital organs develop. Unlike a simple bassinet, an incubator provides an environment that can be adjusted to provide the ideal temperature as well as the perfect amount 
-of oxygen, humidity, and light. This paticular Infant Incubator is set to release on **15th May**(Deadline of the Project). The developers of this project would like you, the Security Engineer, to ensure the product satisify US Government's security regulations for medical devices before the release date. As a Security Engineer, you are required **"Make sure we satisfiy US Government Regulations"**. The company has given you the options of accomplishing this by either implementing Vulnerability Patching or creating a Risk Analysis Report.
+of oxygen, humidity, and light. This paticular Infant Incubator is set to release on **15th May**(Deadline of the Project). The developers of this project would like you, the Security Engineer, to ensure the product satisify security regulations for medical devices before the release date. As a Security Engineer, you are required **"Make sure we satisfiy security Regulations"**. The company has given you the options of accomplishing this by either implementing Vulnerability Patching or creating a Risk Analysis Report.
 
 The deliverables for this Lab will based on the vulnerability patching:
 
@@ -15,7 +15,7 @@ Your first goal as a Security Engineer who wants to ensure the security of the a
 Notice that these questions are parallel to security paradigms: Security, Efficiency and Accuracy, Availability. If you can find a hypothesis where a security paradigm is not met that would mean the application is not secure and a possible exploit exist. The testcases can be written in python or bash.
 
 # Task:
-We have listed hints for 3 vulnerabilities below which are currently present in code. Your task is to explain how it violates the US Government Regulations and then provide the testcases to demonstrate how these vulnerabilities can be exploited. 
+We have listed hints for 3 vulnerabilities below which are currently present in code. Your task is to explain how it violates the security regulations (in terms of the above questions) and then provide the testcases to demonstrate how these vulnerabilities can be exploited. 
 
 1. Password is Hardcoded (SampleNetworkClient.py)
 2. Token List has the potential to continuously grow (SampleNetworkServer.py)
@@ -23,7 +23,7 @@ We have listed hints for 3 vulnerabilities below which are currently present in 
 
 # Submission: 
 For each vulnerability above:
-1. describe how it violates the US Government regulations.
+1. describe how it answers the three questions mentioned above.
 2. Provide test cases (in python) to demonstrate how these vulnerabilities can be exploited.   
 
 ## Infant Incubator Model Explained
