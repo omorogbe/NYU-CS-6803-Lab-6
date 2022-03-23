@@ -1,7 +1,7 @@
 import threading
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import Group8Incubator import infinc
+from Group8Incubator import infinc
 import time
 import math
 
