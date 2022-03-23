@@ -4,8 +4,8 @@ import time
 import math
 import socket
 
-# Lab6, Task 1
-import getpass
+# Lab 6, Task 1: Remove Hardcoded Password
+from patch_01 import pwAsByte
 
 class SimpleNetworkClient :
     def __init__(self, port1, port2) :
@@ -55,14 +55,11 @@ class SimpleNetworkClient :
 
     def updateInfTemp(self, frame) :
         self.updateTime()
-        #### Replacement Code ####
+
+        # print("self.infToken:",self.infToken)
+        # Lab 6, Task 1: Remove Hardcoded Password
         if self.infToken is None : #not yet authenticated
-            cmdlinePassword = getpass.getpass()
-            pwAsByte = cmdlinePassword.encode('utf=8')
             self.infToken = self.authenticate(self.infPort, pwAsByte)
-        #### Old Code ####                    
-        # if self.infToken is None : #not yet authenticated
-        #     self.infToken = self.authenticate(self.infPort, b"!Q#E%T&U8i6y4r2w")
 
         self.infTemps.append(self.getTemperatureFromPort(self.infPort, self.infToken)-273)
         #self.infTemps.append(self.infTemps[-1] + 1)
@@ -72,20 +69,18 @@ class SimpleNetworkClient :
 
     def updateIncTemp(self, frame) :
         self.updateTime()
-        #### Replacement Code ####
+
+        # print("self.incToken",self.incToken)
+        # Lab 6, Task 1: Remove Hardcoded Password
         if self.incToken is None : #not yet authenticated
-            cmdlinePassword = getpass.getpass()
-            pwAsByte = cmdlinePassword.encode('utf=8')
-            self.infToken = self.authenticate(self.infPort, pwAsByte)
-        #### Old Code ####                    
-        # if self.incToken is None : #not yet authenticated
-        #     self.incToken = self.authenticate(self.incPort, b"!Q#E%T&U8i6y4r2w")
+            self.incToken = self.authenticate(self.incPort, pwAsByte)
 
         self.incTemps.append(self.getTemperatureFromPort(self.incPort, self.incToken)-273)
         #self.incTemps.append(self.incTemps[-1] + 1)
         self.incTemps = self.incTemps[-30:]
         self.incLn.set_data(range(30), self.incTemps)
         return self.incLn,
+
 
 snc = SimpleNetworkClient(23456, 23457)
 
