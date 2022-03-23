@@ -12,6 +12,10 @@ import errno
 import random
 import string
 
+# Lab 6, Task 1
+from patch_01 import pw # Lab 6, Task 1: Remove Hardcoded Password
+
+
 class SmartNetworkThermometer (threading.Thread) :
     open_cmds = ["AUTH", "LOGOUT"]
     prot_cmds = ["SET_DEGF", "SET_DEGC", "SET_DEGK", "GET_TEMP", "UPDATE_TEMP"]
@@ -55,14 +59,18 @@ class SmartNetworkThermometer (threading.Thread) :
 
     def processCommands(self, msg, addr) :
         cmds = msg.split(';')
+
         for c in cmds :
             cs = c.split(' ')
             if len(cs) == 2 : #should be either AUTH or LOGOUT
                 if cs[0] == "AUTH":
-                    if cs[1] == "!Q#E%T&U8i6y4r2w" :
+                    if cs[1] == pw : # Lab 6, Task 1: Remove Hardcoded Password. Used to say: if cs[1] == "!Q#E%T&U8i6y4r2w"
                         self.tokens.append(''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16)))
+                        # print(self.tokens)
                         self.serverSocket.sendto(self.tokens[-1].encode("utf-8"), addr)
                         #print (self.tokens[-1])
+                    else:
+                        self.serverSocket.sendto(b"Invalid Command\n", addr)
                 elif cs[0] == "LOGOUT":
                     if cs[1] in self.tokens :
                         self.tokens.remove(cs[1])
@@ -195,4 +203,5 @@ sc = SimpleClient(bobThermo, incThermo)
 
 plt.grid()
 plt.show()
+
 
